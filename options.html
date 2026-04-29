@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Textbook Summarizer — Settings</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #0f0f0f; --surface: #1a1a1a; --border: #2e2e2e;
+    --accent: #c8f04a; --text: #f0ede6; --muted: #888;
+    --danger: #ff6b6b; --success: #6bffa0; --radius: 8px;
+  }
+  body {
+    background: var(--bg); color: var(--text);
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    font-size: 14px; line-height: 1.6;
+    display: flex; justify-content: center;
+    padding: 40px 16px;
+  }
+  .card {
+    width: 100%; max-width: 480px;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 12px; padding: 28px 28px 24px;
+  }
+  h1 { font-size: 18px; font-weight: 600; margin-bottom: 4px; }
+  .sub { font-size: 13px; color: var(--muted); margin-bottom: 24px; }
+  label { display: block; font-size: 12px; color: var(--muted); margin-bottom: 6px; letter-spacing: 0.04em; text-transform: uppercase; }
+  input[type="password"], input[type="text"] {
+    width: 100%; background: var(--bg); border: 1px solid var(--border);
+    border-radius: var(--radius); color: var(--text);
+    font-size: 13px; padding: 9px 12px; outline: none;
+    transition: border-color 0.15s; font-family: monospace;
+  }
+  input:focus { border-color: #555; }
+  .row { display: flex; gap: 10px; margin-top: 16px; }
+  button {
+    padding: 9px 18px; border-radius: var(--radius); border: 1px solid var(--border);
+    cursor: pointer; font-size: 13px; font-weight: 500; transition: all 0.15s;
+    background: var(--accent); color: #0f0f0f; border-color: var(--accent);
+  }
+  button:hover { background: #d8ff58; }
+  button.secondary {
+    background: transparent; color: var(--muted); border-color: var(--border);
+  }
+  button.secondary:hover { color: var(--text); background: rgba(255,255,255,0.05); }
+  .msg { margin-top: 14px; font-size: 13px; border-radius: var(--radius); padding: 9px 12px; display: none; }
+  .msg.success { background: rgba(107,255,160,0.08); border: 1px solid rgba(107,255,160,0.25); color: var(--success); display: block; }
+  .msg.error   { background: rgba(255,107,107,0.08); border: 1px solid rgba(255,107,107,0.25); color: var(--danger);  display: block; }
+  .hint { margin-top: 20px; font-size: 12px; color: var(--muted); line-height: 1.7; }
+  .hint a { color: var(--accent); text-decoration: none; }
+  .hint a:hover { text-decoration: underline; }
+  .divider { border: none; border-top: 1px solid var(--border); margin: 24px 0; }
+</style>
+</head>
+<body>
+<div class="card">
+  <h1>Settings</h1>
+  <p class="sub">Textbook Summarizer · Gemini Vision</p>
+
+  <label for="apiKeyInput">Google Gemini API Key</label>
+  <input type="password" id="apiKeyInput" placeholder="AIza..." autocomplete="off" />
+
+  <div class="row">
+    <button id="saveBtn">Save key</button>
+    <button class="secondary" id="clearBtn">Clear</button>
+    <button class="secondary" id="showBtn">Show</button>
+  </div>
+
+  <div class="msg" id="msg"></div>
+
+  <hr class="divider" />
+
+  <div class="hint">
+    Your API key is stored locally in your browser using <code>chrome.storage.local</code>
+    and is never sent anywhere except directly to the Google Gemini API.<br><br>
+    Get a free key at <a href="https://aistudio.google.com" target="_blank">aistudio.google.com</a>
+    — sign in with your Google account, then click <strong>Get API key</strong>. No credit card required.
+  </div>
+</div>
+
+<script src="options.js"></script>
+</body>
+</html>
